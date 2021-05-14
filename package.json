@@ -1,0 +1,23 @@
+{
+  "name": "CRM_BACKEND",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuniorGlez/ed5fullstack_backend_crm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuniorGlez/ed5fullstack_backend_crm/issues"
+  },
+  "homepage": "https://github.com/YuniorGlez/ed5fullstack_backend_crm#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
