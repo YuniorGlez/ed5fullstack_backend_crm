@@ -1,5 +1,8 @@
 const UserModel = require("./auth.model");
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
+
 module.exports = { login, register }
 
 
@@ -15,7 +18,14 @@ function login(req, res) {
                 return res.status(404).send('No existe ningún usuario con ese email o password');
             }
 
-            return res.send('Todo bien')
+            const token = jwt.sign({ email: userFound.email }, process.env.TOKEN_PASSWORD);
+
+
+
+            return res.json({
+                user: userFound,
+                token : token
+            })
 
         })
 

@@ -39,6 +39,7 @@ function getOne(req, res) {
 
 function deleteOne(req, res) {
   const id = req.params.id;
+  // En req.currentUser estará la info del usuario actualmente logeado 
   return CustomersModel.findByIdAndDelete(id)
     .then((customer) => {
       return res.json(customer);
