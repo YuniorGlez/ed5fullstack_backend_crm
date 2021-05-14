@@ -1,48 +1,44 @@
+const CustomersModel = require("./customers.model");
 
-
-
-module.exports = { getAll, getOne, deleteOne, putOne, patchOne, postOne }
-
+module.exports = { getAll, getOne, deleteOne, putOne, patchOne, postOne };
 
 function getAll(req, res) {
-    return res.json(
-        [{
-              name: "Luis",
-              email: "luis@squaads.com",
-              contacted: true,
-              photoURL: "https://uifaces.co/our-content/donated/gPZwCbdS.jpg"
-            },
-            {
-              name: "Manolo",
-              email: "manolo@squaads.com",
-              contacted: true,
-              photoURL: "https://randomuser.me/api/portraits/men/36.jpg"
-            },
-            {
-              name: "Luisa",
-              email: "luisa@squaads.com",
-              contacted: true,
-              photoURL: "https://uifaces.co/our-content/donated/3799Ffxy.jpeg"
-            }]
-    )
+  return CustomersModel.find().then((customers) => {
+    return res.json(customers);
+  })
 }
 
 function getOne(req, res) {
-    return res.send('ok')
+    const id = req.params.id;
+    return CustomersModel.findById(id).then((customer) => {
+      return res.json(customer);
+    })
 }
 
 function deleteOne(req, res) {
-    return res.send('ok')
+    const id = req.params.id;
+    return CustomersModel.findByIdAndDelete(id).then((customer) => {
+      return res.json(customer);
+    })
 }
 
 function putOne(req, res) {
-    return res.send('ok')
+    const id = req.params.id;
+    return CustomersModel.findByIdAndUpdate(id, req.body , { runValidators : true}).then((customer) => {
+      return res.json(customer);
+    })
 }
 
 function patchOne(req, res) {
-    return res.send('ok')
+    const id = req.params.id;
+    // El PUT y el PATCH ahora mismo están funcionando igual. Solo editan los atributos que mandas por el body. Tenerlo en cuenta
+    return CustomersModel.findByIdAndUpdate(id, { $set : req.body} , { runValidators : true}).then((customer) => {
+      return res.json(customer);
+    })
 }
 
 function postOne(req, res) {
-    return res.send('ok')
+    return CustomersModel.create(req.body).then((customer) => {
+      return res.json(customer);
+    })
 }

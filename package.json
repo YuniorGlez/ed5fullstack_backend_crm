@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/YuniorGlez/ed5fullstack_backend_crm#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.9"
   }
 }
