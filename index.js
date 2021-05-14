@@ -9,6 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 
+const AuthRouter = require('./auth/auth.router');
+app.use('/', AuthRouter)
+
+
+
 // console.log('Url de mongo => ' + process.env.MONGO_URL)
 mongoose.connect( process.env.MONGO_URL  );
 
